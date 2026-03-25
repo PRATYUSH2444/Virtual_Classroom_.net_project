@@ -1,0 +1,78 @@
+﻿@model VirtualClassroom2.Models.Submission
+@{
+    ViewData["Title"] = "Submit Assignment";
+    var assignment = ViewBag.Assignment as VirtualClassroom2.Models.Assignment;
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">Submit Assignment</h4>
+                </div>
+                <div class="card-body">
+                    <div class="assignment-info mb-4 p-3 bg-light rounded">
+                        <h5>@assignment.Title</h5>
+                        <p class="mb-1"><strong>Instructions:</strong> @assignment.Instructions</p>
+                        <p class="mb-1"><strong>Points:</strong> @assignment.Points</p>
+                        <p class="mb-0"><strong>Due Date:</strong> @assignment.DueDate.ToString("MMM dd, yyyy HH:mm")</p>
+                        @if (assignment.DueDate < DateTime.Now)
+                        {
+                            <p class="text-danger mb-0 mt-2"><strong>⚠ This assignment is overdue!</strong></p>
+                        }
+                        else if ((assignment.DueDate - DateTime.Now).TotalHours < 24)
+                        {
+                            <p class="text-warning mb-0 mt-2"><strong>⚠ Due soon! Submit before deadline.</strong></p>
+                        }
+                    </div>
+
+                    @if (Model != null)
+                    {
+                        <div class="alert alert-info">
+                            <h6><i class="fas fa-info-circle"></i> You have already submitted this assignment</h6>
+                            <p class="mb-1"><strong>Submitted on:</strong> @Model.SubmittedAt.ToString("MMM dd, yyyy HH:mm")</p>
+                            <p class="mb-1">
+                                <strong>Status:</strong>
+                                @if (Model.Marks.HasValue)
+                                {
+                                    <span class="badge bg-success">Graded: @Model.Marks/@assignment.Points</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-warning">Pending Review</span>
+                                }
+                            </p>
+                            @if (!string.IsNullOrEmpty(Model.Feedback))
+                            {
+                                <p class="mb-0"><strong>Teacher Feedback:</strong> @Model.Feedback</p>
+                            }
+                            <p class="mb-0 mt-2">You can upload a new file to replace your previous submission.</p>
+                        </div>
+                    }
+
+                    <form asp-action="Submit" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="assignmentId" value="@assignment.Id" />
+
+                        <div class="form-group mb-4">
+                            <label class="form-label">Submission File *</label>
+                            <input type="file" name="submissionFile" class="form-control" required
+                                   accept=".pdf,.doc,.docx,.ppt,.pptx,.txt,.jpg,.jpeg,.png" />
+                            <small class="form-text text-muted">
+                                Upload your solution file (PDF, DOC, PPT, Images) - Max 100MB
+                            </small>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-paper-plane"></i>
+                                @(Model != null ? "Update Submission" : "Submit Assignment")
+                            </button>
+                            <a href="@Url.Action("Details", new { id = assignment.Id })" class="btn btn-outline-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

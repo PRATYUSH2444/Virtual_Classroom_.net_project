@@ -1,0 +1,41 @@
+﻿@model VirtualClassroom2.Models.Content
+
+@{
+    ViewData["Title"] = "Delete Content";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-danger text-white">
+                    <h4 class="mb-0">Delete Content</h4>
+                </div>
+                <div class="card-body">
+                    <h5>Are you sure you want to delete this content?</h5>
+
+                    <dl class="row mt-3">
+                        <dt class="col-sm-4">Title:</dt>
+                        <dd class="col-sm-8">@Model.Title</dd>
+
+                        <dt class="col-sm-4">Classroom:</dt>
+                        <dd class="col-sm-8">@Model.Classroom.Title</dd>
+
+                        <dt class="col-sm-4">File Type:</dt>
+                        <dd class="col-sm-8">@Model.FileType</dd>
+                    </dl>
+
+                    <form asp-action="Delete" method="post">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="mt-4">
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fas fa-trash"></i> Delete
+                            </button>
+                            <a href="@Url.Action("Index")" class="btn btn-outline-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

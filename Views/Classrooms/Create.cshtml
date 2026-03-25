@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Create Classroom";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">Create New Classroom</h4>
+                </div>
+                <div class="card-body">
+                    @if (TempData["Error"] != null)
+                    {
+                        <div class="alert alert-danger">
+                            @TempData["Error"]
+                        </div>
+                    }
+
+                    <form asp-action="Create" method="post">
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group mb-3">
+                            <label class="form-label">Title *</label>
+                            <input type="text" name="Title" class="form-control" required />
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label class="form-label">Subject *</label>
+                            <input type="text" name="Subject" class="form-control" required />
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label class="form-label">Description</label>
+                            <textarea name="Description" class="form-control" rows="3"></textarea>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label class="form-label">Enrolment Key *</label>
+                            <input type="text" name="EnrolmentKey" class="form-control" required />
+                            <small class="form-text text-muted">Students will need this key to join your classroom.</small>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Create Classroom
+                            </button>
+                            <a href="@Url.Action("Index")" class="btn btn-outline-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

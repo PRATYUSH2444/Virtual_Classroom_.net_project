@@ -1,0 +1,147 @@
+﻿@model List<VirtualClassroom2.Models.Classroom>
+@{
+    ViewData["Title"] = "Teacher Dashboard";
+}
+
+<div class="container-fluid">
+    <!-- Header Section -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h1 class="h2 mb-1">My Classrooms</h1>
+                    <p class="text-muted mb-0">Manage your virtual classrooms and teaching materials</p>
+                </div>
+                <a href="@Url.Action("Create", "Classrooms")" class="btn btn-primary">
+                    <i class="fas fa-plus me-2"></i>New Classroom
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Overview -->
+    <div class="row mb-5">
+        <div class="col-md-3 mb-4">
+            <div class="stat-card">
+                <h3>@Model.Count</h3>
+                <p>Active Classrooms</p>
+                <i class="fas fa-chalkboard fa-2x opacity-50 position-absolute" style="bottom: 20px; right: 20px;"></i>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="stat-card" style="background: linear-gradient(135deg, #10b981, #059669);">
+                <h3>@Model.Sum(c => c.Enrollments?.Count ?? 0)</h3>
+                <p>Total Students</p>
+                <i class="fas fa-users fa-2x opacity-50 position-absolute" style="bottom: 20px; right: 20px;"></i>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="stat-card" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+                <h3>@Model.Sum(c => c.Contents?.Count ?? 0)</h3>
+                <p>Content Files</p>
+                <i class="fas fa-file-alt fa-2x opacity-50 position-absolute" style="bottom: 20px; right: 20px;"></i>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="stat-card" style="background: linear-gradient(135deg, #ef4444, #dc2626);">
+                <h3>@Model.Sum(c => c.Assignments?.Count ?? 0)</h3>
+                <p>Active Assignments</p>
+                <i class="fas fa-tasks fa-2x opacity-50 position-absolute" style="bottom: 20px; right: 20px;"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Classrooms Grid -->
+    @if (Model != null && Model.Any())
+    {
+        <div class="row">
+            @foreach (var classroom in Model)
+            {
+                <div class="col-xl-4 col-lg-6 mb-4">
+                    <div class="card h-100 classroom-card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="card-title mb-0 text-truncate">@classroom?.Title</h5>
+                            <span class="badge bg-primary">@classroom?.Subject</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text text-muted mb-3">@classroom?.Description</p>
+
+                            <div class="classroom-stats mb-4">
+                                <div class="d-flex justify-content-between text-sm mb-2">
+                                    <span class="text-muted">
+                                        <i class="fas fa-users me-1"></i>
+                                        @(classroom?.Enrollments?.Count ?? 0) Students
+                                    </span>
+                                    <span class="text-muted">
+                                        <i class="fas fa-key me-1"></i>
+                                        @classroom?.EnrolmentKey
+                                    </span>
+                                </div>
+                                <div class="d-flex justify-content-between text-sm">
+                                    <span class="text-muted">
+                                        <i class="fas fa-file-alt me-1"></i>
+                                        @(classroom?.Contents?.Count ?? 0) Files
+                                    </span>
+                                    <span class="text-muted">
+                                        <i class="fas fa-tasks me-1"></i>
+                                        @(classroom?.Assignments?.Count ?? 0) Assignments
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="btn-group w-100">
+                                <a href="@Url.Action("Details", "Classrooms", new { id = classroom?.Id })"
+                                   class="btn btn-outline-primary btn-sm flex-fill">
+                                    <i class="fas fa-cog me-1"></i>Manage
+                                </a>
+                                <a href="@Url.Action("Index", "Contents", new { classroomId = classroom?.Id })"
+                                   class="btn btn-outline-primary btn-sm flex-fill">
+                                    <i class="fas fa-file-alt me-1"></i>Content
+                                </a>
+                                <a href="@Url.Action("Index", "Assignments", new { classroomId = classroom?.Id })"
+                                   class="btn btn-outline-primary btn-sm flex-fill">
+                                    <i class="fas fa-tasks me-1"></i>Assignments
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="text-center py-5">
+            <div class="empty-state">
+                <i class="fas fa-chalkboard-teacher fa-4x text-muted mb-4"></i>
+                <h3 class="text-muted mb-3">No Classrooms Yet</h3>
+                <p class="text-muted mb-4">Create your first classroom to start teaching online</p>
+                <a href="@Url.Action("Create", "Classrooms")" class="btn btn-primary btn-lg">
+                    <i class="fas fa-plus me-2"></i>Create Classroom
+                </a>
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    .classroom-card {
+        border-left: 4px solid var(--primary);
+    }
+
+    .empty-state {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .btn-group .btn {
+        border-radius: 8px;
+        margin: 0 2px;
+    }
+
+    .classroom-stats {
+        background: var(--secondary);
+        border-radius: 12px;
+        padding: 1rem;
+    }
+</style>

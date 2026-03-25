@@ -1,0 +1,57 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using VirtualClassroom2.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    var user = await UserManager.GetUserAsync(User);
+    <div class="dropdown">
+        <button class="btn btn-outline-primary dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown">
+            <div class="avatar-sm me-2">
+                <div class="avatar-initials bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 32px; height: 32px; font-size: 0.875rem;">
+                    @(user?.FirstName?[0])@(user?.LastName?[0])
+                </div>
+            </div>
+            <span class="d-none d-md-inline">@user?.FirstName</span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+                <div class="dropdown-header">
+                    <div class="d-flex align-items-center">
+                        <div class="avatar-sm me-3">
+                            <div class="avatar-initials bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                @(user?.FirstName?[0])@(user?.LastName?[0])
+                            </div>
+                        </div>
+                        <div>
+                            <h6 class="mb-0">@user?.FirstName @user?.LastName</h6>
+                            <small class="text-muted">@user?.Role</small>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+                <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index">
+                    <i class="fas fa-user me-2"></i>Profile
+                </a>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                    <button type="submit" class="dropdown-item">
+                        <i class="fas fa-sign-out-alt me-2"></i>Logout
+                    </button>
+                </form>
+            </li>
+        </ul>
+    </div>
+}
+else
+{
+    <div class="d-flex gap-2">
+        <a class="btn btn-outline-primary" asp-area="Identity" asp-page="/Account/Login">Sign In</a>
+        <a class="btn btn-primary" asp-area="Identity" asp-page="/Account/Register">Get Started</a>
+    </div>
+}

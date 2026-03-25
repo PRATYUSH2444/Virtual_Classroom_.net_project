@@ -1,0 +1,80 @@
+﻿@{
+    ViewData["Title"] = "Create Assignment";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">Create New Assignment</h4>
+                </div>
+                <div class="card-body">
+                    @if (TempData["Error"] != null)
+                    {
+                        <div class="alert alert-danger">
+                            @TempData["Error"]
+                        </div>
+                    }
+
+                    <form asp-action="Create" method="post">
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group mb-3">
+                            <label class="form-label">Classroom *</label>
+                            <select name="ClassroomId" class="form-control" asp-items="ViewBag.ClassroomId" required>
+                                <option value="">Select Classroom</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label class="form-label">Title *</label>
+                            <input type="text" name="Title" class="form-control" placeholder="Enter assignment title" required />
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label class="form-label">Instructions *</label>
+                            <textarea name="Instructions" class="form-control" rows="4" placeholder="Enter assignment instructions and requirements" required></textarea>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Points</label>
+                                    <input type="number" name="Points" class="form-control" min="1" max="1000" value="100" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Due Date *</label>
+                                    <input type="datetime-local" name="DueDate" class="form-control" required />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Create Assignment
+                            </button>
+                            <a href="@Url.Action("Index")" class="btn btn-outline-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Set minimum datetime to current time
+        var now = new Date();
+        now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+        document.querySelector('input[name="DueDate"]').min = now.toISOString().slice(0, 16);
+
+        // Set default due date to tomorrow same time
+        var tomorrow = new Date(now);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        document.querySelector('input[name="DueDate"]').value = tomorrow.toISOString().slice(0, 16);
+    </script>
+}

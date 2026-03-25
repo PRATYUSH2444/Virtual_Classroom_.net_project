@@ -1,0 +1,150 @@
+﻿@model dynamic
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="container-fluid">
+    <!-- Header Section -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h1 class="h2 mb-1">Admin Dashboard</h1>
+                    <p class="text-muted mb-0">System overview and management</p>
+                </div>
+                <div class="d-flex gap-2">
+                    <button class="btn btn-outline-primary">
+                        <i class="fas fa-sync-alt me-2"></i>Refresh
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- System Stats -->
+    <div class="row mb-5">
+        <div class="col-md-3 mb-4">
+            <div class="stat-card">
+                <h3>@Model.TotalUsers</h3>
+                <p>Total Users</p>
+                <i class="fas fa-users fa-2x opacity-50 position-absolute" style="bottom: 20px; right: 20px;"></i>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="stat-card" style="background: linear-gradient(135deg, #10b981, #059669);">
+                <h3>@Model.TotalClassrooms</h3>
+                <p>Active Classrooms</p>
+                <i class="fas fa-chalkboard fa-2x opacity-50 position-absolute" style="bottom: 20px; right: 20px;"></i>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="stat-card" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+                <h3>@Model.TotalTeachers</h3>
+                <p>Teachers</p>
+                <i class="fas fa-chalkboard-teacher fa-2x opacity-50 position-absolute" style="bottom: 20px; right: 20px;"></i>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="stat-card" style="background: linear-gradient(135deg, #ef4444, #dc2626);">
+                <h3>@Model.TotalStudents</h3>
+                <p>Students</p>
+                <i class="fas fa-user-graduate fa-2x opacity-50 position-absolute" style="bottom: 20px; right: 20px;"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions & System Info -->
+    <div class="row">
+        <div class="col-lg-8 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Quick Actions</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <a href="@Url.Action("Index", "ManageUsers")" class="card action-card h-100 text-decoration-none">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-users-cog fa-2x text-primary mb-3"></i>
+                                    <h6 class="card-title">Manage Users</h6>
+                                    <p class="text-muted small">View and manage all system users</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="@Url.Action("Index", "Classrooms")" class="card action-card h-100 text-decoration-none">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-chalkboard fa-2x text-primary mb-3"></i>
+                                    <h6 class="card-title">All Classrooms</h6>
+                                    <p class="text-muted small">Monitor all active classrooms</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="@Url.Action("Index", "Contents")" class="card action-card h-100 text-decoration-none">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-file-alt fa-2x text-primary mb-3"></i>
+                                    <h6 class="card-title">Content Management</h6>
+                                    <p class="text-muted small">Manage all learning materials</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="@Url.Action("Index", "Assignments")" class="card action-card h-100 text-decoration-none">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-tasks fa-2x text-primary mb-3"></i>
+                                    <h6 class="card-title">Assignments</h6>
+                                    <p class="text-muted small">View all assignments and submissions</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">System Information</h5>
+                </div>
+                <div class="card-body">
+                    <div class="system-info">
+                        <div class="info-item d-flex justify-content-between align-items-center py-2 border-bottom">
+                            <span class="text-muted">Database</span>
+                            <span class="fw-semibold">VirtualClassroomDB</span>
+                        </div>
+                        <div class="info-item d-flex justify-content-between align-items-center py-2 border-bottom">
+                            <span class="text-muted">Status</span>
+                            <span class="badge bg-success">Online</span>
+                        </div>
+                        <div class="info-item d-flex justify-content-between align-items-center py-2 border-bottom">
+                            <span class="text-muted">Last Updated</span>
+                            <span class="fw-semibold">@DateTime.Now.ToString("MMM dd, yyyy HH:mm")</span>
+                        </div>
+                        <div class="info-item d-flex justify-content-between align-items-center py-2">
+                            <span class="text-muted">Version</span>
+                            <span class="fw-semibold">2.0.0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .action-card {
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+    }
+
+        .action-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+    .system-info .info-item:last-child {
+        border-bottom: none !important;
+    }
+</style>

@@ -1,0 +1,820 @@
+﻿@{
+    ViewData["Title"] = "Virtual Classroom - Online Learning Platform";
+}
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="hero-bg"></div>
+    <div class="container">
+        <div class="row align-items-center min-vh-100">
+            <div class="col-lg-6">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span class="title-line">Welcome to</span>
+                        <span class="title-highlight">Virtual Classroom</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Revolutionizing education with our comprehensive online learning platform.
+                        Connect, collaborate, and learn without boundaries.
+                    </p>
+                    <div class="hero-buttons">
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <a href="/Identity/Account/Register" class="btn btn-primary btn-hero">
+                                <i class="fas fa-rocket me-2"></i>Get Started Free
+                            </a>
+                            <a href="/Identity/Account/Login" class="btn btn-outline-hero">
+                                <i class="fas fa-sign-in-alt me-2"></i>Sign In
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="/Home" class="btn btn-primary btn-hero">
+                                <i class="fas fa-tachometer-alt me-2"></i>Go to Dashboard
+                            </a>
+                        }
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <h3>5000+</h3>
+                            <p>Active Students</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>200+</h3>
+                            <p>Expert Teachers</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>100+</h3>
+                            <p>Courses Available</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="hero-visual">
+                    <div class="floating-card card-1">
+                        <i class="fas fa-video"></i>
+                        <span>Live Classes</span>
+                    </div>
+                    <div class="floating-card card-2">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Assignments</span>
+                    </div>
+                    <div class="floating-card card-3">
+                        <i class="fas fa-users"></i>
+                        <span>Collaboration</span>
+                    </div>
+                    <div class="main-visual">
+                        <div class="screen-mockup">
+                            <div class="screen-header">
+                                <div class="header-dots">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </div>
+                            <div class="screen-content">
+                                <div class="message left">
+                                    <div class="avatar"></div>
+                                    <div class="bubble">Welcome to today's class!</div>
+                                </div>
+                                <div class="message right">
+                                    <div class="bubble">Excited to learn! 🎓</div>
+                                    <div class="avatar"></div>
+                                </div>
+                                <div class="upload-area">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <span>Upload your assignment</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Marquee Section -->
+<section class="marquee-section">
+    <div class="marquee-container">
+        <div class="marquee-content">
+            <span>🚀 Transform Your Learning Experience • 💡 Interactive Virtual Classes • 📚 Comprehensive Course Materials • 👥 Real-time Collaboration • 🎯 Smart Assignments • 📊 Progress Tracking • 🔐 Secure Platform • 🌟 5-Star Rated •</span>
+            <span>🚀 Transform Your Learning Experience • 💡 Interactive Virtual Classes • 📚 Comprehensive Course Materials • 👥 Real-time Collaboration • 🎯 Smart Assignments • 📊 Progress Tracking • 🔐 Secure Platform • 🌟 5-Star Rated •</span>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Why Choose Virtual Classroom?</h2>
+            <p>Experience the future of education with our cutting-edge features</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h4>Live Interactive Classes</h4>
+                    <p>Engage in real-time video classes with interactive whiteboards and instant messaging.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h4>Smart Assignments</h4>
+                    <p>Create, submit, and grade assignments seamlessly with our intuitive workflow.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-upload"></i>
+                    </div>
+                    <h4>Content Management</h4>
+                    <p>Upload and organize study materials, videos, and resources with ease.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4>Collaborative Learning</h4>
+                    <p>Work together with classmates on projects and discussions.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h4>Progress Tracking</h4>
+                    <p>Monitor your learning journey with detailed analytics and reports.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h4>Mobile Friendly</h4>
+                    <p>Access your classroom anytime, anywhere on any device.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works Section -->
+<section class="works-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>How It Works</h2>
+            <p>Get started in just a few simple steps</p>
+        </div>
+        <div class="works-timeline">
+            <div class="works-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h4>Sign Up & Create Profile</h4>
+                    <p>Register as a student or teacher and set up your learning profile</p>
+                </div>
+            </div>
+            <div class="works-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h4>Join or Create Classroom</h4>
+                    <p>Students can join using enrolment keys, teachers can create classrooms</p>
+                </div>
+            </div>
+            <div class="works-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h4>Start Learning & Teaching</h4>
+                    <p>Access content, attend classes, submit assignments, and track progress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2>Ready to Transform Your Learning Experience?</h2>
+            <p>Join thousands of students and teachers already using Virtual Classroom</p>
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <div class="cta-buttons">
+                    <a href="/Identity/Account/Register" class="btn btn-light btn-lg">
+                        <i class="fas fa-user-plus me-2"></i>Start Free Today
+                    </a>
+                    <a href="/Identity/Account/Login" class="btn btn-outline-light btn-lg">
+                        <i class="fas fa-sign-in-alt me-2"></i>Existing User
+                    </a>
+                </div>
+            }
+            else
+            {
+                <div class="cta-buttons">
+                    <a href="/Home" class="btn btn-light btn-lg">
+                        <i class="fas fa-tachometer-alt me-2"></i>Go to Dashboard
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- Footer Section -->
+<footer class="home-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h5>Virtual Classroom</h5>
+                <p>Empowering education through technology. Making learning accessible, engaging, and effective for everyone.</p>
+            </div>
+            <div class="col-md-3">
+                <h6>Quick Links</h6>
+                <ul>
+                    <li><a href="/Home">Home</a></li>
+                    <li><a href="/Home/Privacy">Privacy</a></li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li><a href="/Classrooms">Classrooms</a></li>
+                        <li><a href="/Home">Dashboard</a></li>
+                    }
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h6>Connect</h6>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Virtual Classroom. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<style>
+    /* Hero Section */
+    .hero-section {
+        position: relative;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .hero-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23ffffff" fill-opacity="0.05" points="0,1000 1000,0 1000,1000"/></svg>');
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .hero-title {
+        font-size: 3.5rem;
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+    }
+
+    .title-line {
+        display: block;
+        animation: slideInLeft 1s ease-out;
+    }
+
+    .title-highlight {
+        background: linear-gradient(45deg, #ffd89b, #19547b);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: slideInRight 1s ease-out 0.3s both;
+    }
+
+    .hero-subtitle {
+        font-size: 1.3rem;
+        margin-bottom: 2.5rem;
+        opacity: 0.9;
+        animation: fadeInUp 1s ease-out 0.6s both;
+    }
+
+    .hero-buttons {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 3rem;
+        animation: fadeInUp 1s ease-out 0.9s both;
+    }
+
+    .btn-hero {
+        padding: 15px 30px;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary.btn-hero {
+        background: linear-gradient(45deg, #ffd89b, #19547b);
+        border: none;
+        box-shadow: 0 10px 30px rgba(255, 216, 155, 0.3);
+    }
+
+    .btn-outline-hero {
+        border: 2px solid white;
+        color: white;
+        background: transparent;
+    }
+
+    .btn-hero:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 35px rgba(255, 216, 155, 0.4);
+    }
+
+    .hero-stats {
+        display: flex;
+        gap: 3rem;
+        animation: fadeInUp 1s ease-out 1.2s both;
+    }
+
+    .stat-item h3 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        background: linear-gradient(45deg, #ffd89b, #19547b);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .stat-item p {
+        opacity: 0.8;
+        margin: 0;
+    }
+
+    /* Hero Visual */
+    .hero-visual {
+        position: relative;
+        height: 500px;
+    }
+
+    .floating-card {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 15px;
+        padding: 15px 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: white;
+        font-weight: 500;
+        z-index: 2;
+    }
+
+    .card-1 {
+        top: 10%;
+        right: 20%;
+        animation: float 3s ease-in-out infinite;
+    }
+
+    .card-2 {
+        top: 50%;
+        right: 10%;
+        animation: float 3s ease-in-out infinite 1s;
+    }
+
+    .card-3 {
+        bottom: 20%;
+        right: 25%;
+        animation: float 3s ease-in-out infinite 2s;
+    }
+
+    .main-visual {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .screen-mockup {
+        width: 300px;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+        animation: float 4s ease-in-out infinite;
+    }
+
+    .screen-header {
+        background: #667eea;
+        padding: 15px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .header-dots {
+        display: flex;
+        gap: 8px;
+    }
+
+        .header-dots span {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+    .screen-content {
+        padding: 20px;
+        background: #f8f9fa;
+        min-height: 200px;
+    }
+
+    .message {
+        display: flex;
+        align-items: flex-end;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+
+        .message.left {
+            justify-content: flex-start;
+        }
+
+        .message.right {
+            justify-content: flex-end;
+        }
+
+    .avatar {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: #667eea;
+    }
+
+    .bubble {
+        background: white;
+        padding: 10px 15px;
+        border-radius: 15px;
+        max-width: 70%;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .upload-area {
+        background: white;
+        border: 2px dashed #667eea;
+        border-radius: 10px;
+        padding: 15px;
+        text-align: center;
+        color: #667eea;
+        margin-top: 15px;
+    }
+
+    /* Marquee Section */
+    .marquee-section {
+        background: linear-gradient(45deg, #ffd89b, #19547b);
+        padding: 20px 0;
+        overflow: hidden;
+    }
+
+    .marquee-container {
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .marquee-content {
+        display: inline-block;
+        animation: marquee 20s linear infinite;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: white;
+    }
+
+        .marquee-content span {
+            padding-right: 50px;
+        }
+
+    /* Features Section */
+    .features-section {
+        padding: 100px 0;
+        background: #f8f9fa;
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: #6c757d;
+        }
+
+    .feature-card {
+        background: white;
+        padding: 40px 30px;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        height: 100%;
+    }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+    .feature-icon {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 30px;
+        font-size: 2rem;
+        color: white;
+    }
+
+    .feature-card h4 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+
+    .feature-card p {
+        color: #6c757d;
+        line-height: 1.6;
+    }
+
+    /* How It Works */
+    .works-section {
+        padding: 100px 0;
+        background: white;
+    }
+
+    .works-timeline {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .works-step {
+        display: flex;
+        align-items: center;
+        margin-bottom: 50px;
+        position: relative;
+    }
+
+        .works-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 25px;
+            top: 70px;
+            bottom: -50px;
+            width: 2px;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+        }
+
+    .step-number {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+        font-size: 1.2rem;
+        margin-right: 30px;
+        flex-shrink: 0;
+    }
+
+    .step-content h4 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+
+    .step-content p {
+        color: #6c757d;
+        margin: 0;
+    }
+
+    /* CTA Section */
+    .cta-section {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 100px 0;
+        text-align: center;
+    }
+
+    .cta-content h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+    }
+
+    .cta-content p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+    }
+
+    .cta-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    /* Footer */
+    .home-footer {
+        background: #2c3e50;
+        color: white;
+        padding: 50px 0 20px;
+    }
+
+        .home-footer h5,
+        .home-footer h6 {
+            margin-bottom: 1rem;
+        }
+
+        .home-footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+            .home-footer ul li {
+                margin-bottom: 0.5rem;
+            }
+
+                .home-footer ul li a {
+                    color: #bdc3c7;
+                    text-decoration: none;
+                    transition: color 0.3s ease;
+                }
+
+                    .home-footer ul li a:hover {
+                        color: white;
+                    }
+
+    .social-links {
+        display: flex;
+        gap: 1rem;
+    }
+
+        .social-links a {
+            color: #bdc3c7;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+            .social-links a:hover {
+                color: white;
+            }
+
+    .footer-bottom {
+        border-top: 1px solid #34495e;
+        padding-top: 20px;
+        margin-top: 30px;
+        text-align: center;
+        color: #bdc3c7;
+    }
+
+    /* Animations */
+    @@keyframes float {
+        0%, 100% {
+            transform: translateY(0px);
+        }
+
+        50% {
+            transform: translateY(-20px);
+        }
+    }
+
+    @@keyframes slideInLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @@keyframes slideInRight {
+        from {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @@keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @@keyframes marquee {
+        0% {
+            transform: translateX(0);
+        }
+
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+
+    /* Responsive */
+    @@media (max-width: 768px) {
+        .hero-title {
+            font-size: 2.5rem;
+        }
+
+        .hero-buttons {
+            flex-direction: column;
+        }
+
+        .hero-stats {
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .screen-mockup {
+            width: 250px;
+        }
+
+        .cta-buttons {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+</style>
+
+<script>
+    // Additional interactive animations
+    document.addEventListener('DOMContentLoaded', function() {
+        // Animate feature cards on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.style.opacity = '0';
+            observer.observe(card);
+        });
+    });
+</script>

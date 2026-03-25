@@ -1,0 +1,50 @@
+﻿@model VirtualClassroom2.Models.Content
+
+@{
+    ViewData["Title"] = "Content Details";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">Content Details</h4>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-3">Title:</dt>
+                        <dd class="col-sm-9">@Model.Title</dd>
+
+                        <dt class="col-sm-3">Description:</dt>
+                        <dd class="col-sm-9">@Model.Description</dd>
+
+                        <dt class="col-sm-3">Classroom:</dt>
+                        <dd class="col-sm-9">@Model.Classroom.Title</dd>
+
+                        <dt class="col-sm-3">File Type:</dt>
+                        <dd class="col-sm-9">
+                            <span class="badge bg-secondary">@Model.FileType.ToUpper()</span>
+                        </dd>
+
+                        <dt class="col-sm-3">File Size:</dt>
+                        <dd class="col-sm-9">@(Model.FileSize / 1024 / 1024) MB</dd>
+
+                        <dt class="col-sm-3">Uploaded By:</dt>
+                        <dd class="col-sm-9">@Model.UploadedBy.FirstName @Model.UploadedBy.LastName</dd>
+
+                        <dt class="col-sm-3">Upload Date:</dt>
+                        <dd class="col-sm-9">@Model.UploadedAt.ToString("MMM dd, yyyy HH:mm")</dd>
+                    </dl>
+
+                    <div class="mt-4">
+                        <a href="@Url.Action("Download", new { id = Model.Id })" class="btn btn-primary">
+                            <i class="fas fa-download"></i> Download File
+                        </a>
+                        <a href="@Url.Action("Index")" class="btn btn-outline-secondary">Back to List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

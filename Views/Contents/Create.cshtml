@@ -1,0 +1,65 @@
+﻿@model VirtualClassroom2.Models.Content
+
+@{
+    ViewData["Title"] = "Upload Content";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">Upload New Content</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="ClassroomId" class="control-label">Classroom</label>
+                            <select asp-for="ClassroomId" class="form-control" asp-items="ViewBag.ClassroomId">
+                                <option value="">Select Classroom</option>
+                            </select>
+                            <span asp-validation-for="ClassroomId" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Title" class="control-label"></label>
+                            <input asp-for="Title" class="form-control" placeholder="Enter content title" />
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Description" class="control-label"></label>
+                            <textarea asp-for="Description" class="form-control" rows="3" placeholder="Enter content description"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label class="control-label">File Upload</label>
+                            <input type="file" name="file" class="form-control" accept=".pdf,.doc,.docx,.ppt,.pptx,.jpg,.jpeg,.png,.mp4,.avi,.mov" required />
+                            <small class="form-text text-muted">Supported formats: PDF, DOC, PPT, Images, Videos (Max: 100MB)</small>
+                            @if (ViewData.ModelState["file"]?.Errors?.Count > 0)
+                            {
+                                <span class="text-danger">@ViewData.ModelState["file"].Errors[0].ErrorMessage</span>
+                            }
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-upload"></i> Upload Content
+                            </button>
+                            <a href="@Url.Action("Index")" class="btn btn-outline-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
