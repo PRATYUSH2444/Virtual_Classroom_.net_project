@@ -38,17 +38,6 @@ wwwroot/       # static files + uploads
 
 ---
 
-## 🚀 How to run
-
-```bash
-git clone https://github.com/YOUR_USERNAME/VirtualClassroom2.git
-cd VirtualClassroom2
-dotnet ef database update
-dotnet run
-```
-
----
-
 ## 📚 What I learned from this
 
 * How MVC actually works in a real project
